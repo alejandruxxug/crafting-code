@@ -1,0 +1,18 @@
+// Zero-install fallback: the module from the video, hand-assembled.
+// Identical to add.wat, byte for byte — no compiler needed to run this.
+//
+//   (func $add (param i32 i32) (result i32)
+//     local.get 0        ->  0x20 0x00
+//     local.get 1        ->  0x20 0x01
+//     i32.add)           ->  0x6a
+const bytes = new Uint8Array([
+  0x00,0x61,0x73,0x6d, 0x01,0x00,0x00,0x00,        // magic "\0asm", version 1
+  0x01,0x07,0x01, 0x60,0x02,0x7f,0x7f,0x01,0x7f,   // type:   (i32,i32) -> i32
+  0x03,0x02,0x01,0x00,                             // func:   one function, type 0
+  0x07,0x07,0x01, 0x03,0x61,0x64,0x64, 0x00,0x00,  // export: "add" -> func 0
+  0x0a,0x09,0x01, 0x07,0x00, 0x20,0x00, 0x20,0x01, 0x6a, 0x0b, // code
+]);
+
+console.log(`module is ${bytes.length} bytes`);
+const { instance } = await WebAssembly.instantiate(bytes);
+console.log("add(2, 40) =", instance.exports.add(2, 40));
