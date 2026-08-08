@@ -1,17 +1,33 @@
-# 🧱 Crafting Code — the demos
+# 🧱 Crafting Code
 
-Every piece of code shown in **Crafting Code: Bytecode, the JVM, LLVM & WebAssembly**, as something you can run yourself.
+Everything behind **Crafting Code: Bytecode, the JVM, LLVM & WebAssembly** — a compilers presentation recorded inside Minecraft, with the code segments narrated by two AI-animated cats.
 
-Nothing in the video is mocked up. Every number and every listing on screen came out of these scripts, and if you run them you should get the same thing. That's the point of this repo — check our work.
+Nothing in the video is mocked up. Every number and every listing on screen came out of the scripts in this repo, and if you run them you should get the same thing. That's the point — check our work.
 
 Languages & Compilers · EIA University · 2026
+
+---
+
+## What's in here
+
+| | |
+|---|---|
+| 🎬 **[SCRIPT.md](SCRIPT.md)** | The full video script — dialogue, shots, the metaphor map, and the Minecraft command-block appendix |
+| 🐈 **[JOURNEY.md](JOURNEY.md)** | How this got built, including the three demos that fought back |
+| 💻 **[The demos](#the-demos)** | Four runnable folders — the code from every overlay |
+
+### The cats
+
+They were animated with **[CatSync](https://github.com/alejandruxxug/Catsync)** — a sprite-sheet + audio → lip-synced animation tool built for this video, then cleaned up and released MIT.
+
+One HTML file, no dependencies, no build step, no server. It [runs in your browser right now](https://alejandruxxug.github.io/Catsync/) if you want to make your own talking cat, and it works offline. The story of why it exists is in [JOURNEY.md](JOURNEY.md).
 
 ---
 
 ## TL;DR
 
 ```bash
-git clone <this-repo> && cd crafting-code-demos
+git clone <this-repo> && cd crafting-code
 ./run-all.sh
 ```
 
@@ -218,6 +234,10 @@ The `sink` variable matters too: without something consuming the result, the JIT
 ## Repo layout
 
 ```
+README.md      you are here
+SCRIPT.md      the full video script
+JOURNEY.md     how it got made
+
 01-bytecode/   Add.java              run.sh
 02-llvm/       add.c  add.ll         run.sh
 03-wasm/       add.c  add.wat        run.sh  run-wasm.mjs  no-toolchain.mjs
@@ -229,6 +249,6 @@ run-all.sh
 
 ## Verified on
 
-macOS 15 (Apple Silicon) · OpenJDK 25.0.2 · Apple clang 17.0.0 · Homebrew clang/llc 22.1.8 · lld 22.1.8 · Node 22
+macOS 26 (Apple Silicon) · OpenJDK 25.0.2 · Apple clang 17.0.0 · Homebrew clang/llc 22.1.8 · lld 22.1.8 · Node 22
 
 Linux should work everywhere except the hardcoded Homebrew paths in `03-wasm/run.sh` — change those two variables to wherever your distro puts `clang` and `wasm-ld`, or just run `no-toolchain.mjs`.

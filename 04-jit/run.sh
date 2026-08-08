@@ -7,7 +7,7 @@ echo "==> javac Demo.java"
 javac Demo.java
 
 echo
-echo "==> java Demo           (cold vs hot — expect roughly 8x)"
+echo "==> java Demo           (cold vs hot)"
 java Demo
 
 echo
