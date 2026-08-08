@@ -27,7 +27,8 @@ One HTML file, no dependencies, no build step, no server. It [runs in your brows
 ## TL;DR
 
 ```bash
-git clone <this-repo> && cd crafting-code
+git clone https://github.com/alejandruxxug/crafting-code.git
+cd crafting-code
 ./run-all.sh
 ```
 
